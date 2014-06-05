@@ -17,10 +17,14 @@
 }
 
 .card-image {
-    width: 329px;
+    width: 327px;
+    height: 260px;
     position: absolute;
-    top: 85px;
+    top: 84px;
     left: 23px;
+
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .card.front {
