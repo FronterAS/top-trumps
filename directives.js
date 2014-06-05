@@ -41,11 +41,6 @@ app.directive('status', function () {
                 $scope.chooseProperty = function (propertyName) {
                     $scope.$emit(GameEvents.PROPERTY_CHOSEN, propertyName);
                 };
-
-                // Opponents have not sent their card data yet.
-                if ($scope.data) {
-                    $scope.imageUrl = $scope.data.imageUrl;
-                }
             },
 
             link: function (scope, element) {
