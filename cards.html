@@ -1,18 +1,9 @@
-<div>
+<div ng-if="myGo">
     <button ng-click="sendCard()">Send</button>
+    <span class="my-go-marker">My go!</span>
 </div>
-<div>{{receivedMessage}}</div>
+
 <ul id="cards">
-    <li id="my-card" class="card">
-        <ul>
-            <li class="value value1">Age: {{myCard.age}}</li>
-            <li class="value value2">Height: {{myCard.height}}</li>
-        </ul>
-    </li>
-    <li id="your-card" class="card" ng-if="yourCard">
-        <ul>
-            <li class="value value1">Age: {{yourCard.age}}</li>
-            <li class="value value2">Height: {{yourCard.height}}</li>
-        </ul>
-    </li>
+    <card id="my-card" ng-if="myCard" data="myCard"></card>
+    <card id="your-card" ng-if="yourCard" data="yourCard"></card>
 </ul>

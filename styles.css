@@ -8,6 +8,8 @@
     display: inline-block;
     vertical-align: top;
     position: relative;
+
+    font-family: "Comic Sans MS", cursive, sans-serif
 }
 
 ul {
@@ -32,4 +34,9 @@ ul {
 .value2 {
     top: 386px;
     left: 226px;
+}
+
+.my-go-marker {
+    color: white;
+    background: red;
 }
