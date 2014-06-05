@@ -17,7 +17,7 @@ app.directive('status', function () {
         return {
             restrict: 'E',
             templateUrl: 'connection-interface.html'
-
+        };
     })
 
     .directive('cards', function () {

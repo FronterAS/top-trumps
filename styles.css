@@ -24,6 +24,11 @@ ul {
     -webkit-transform:rotate(-3deg); /* Opera, Chrome, and Safari */
     -ms-transform:rotate(-3deg); /* IE 9 */
     transform:rotate(-3deg);
+    cursor: pointer;
+}
+
+.value:hover {
+    background: red;
 }
 
 .value-0 {

@@ -1,4 +1,4 @@
-app.controller('MainController', function ($scope, Utils, Connection) {
+app.controller('MainController', function ($scope, Utils, Storage, Connection) {
         var callbacks = {
                 onRegisterIdWithPeerServer: function (id) {
                     $scope.myId = id;
@@ -61,6 +61,12 @@ app.controller('MainController', function ($scope, Utils, Connection) {
         $scope.myCard     = Utils.makeCard();
         $scope.myGo       = false;
         $scope.connnected = false;
+
+        // You can clear out the storage
+        // Storage.clear();
+
+        // It might not exist, but if it does it will save you some time.
+        $scope.opponentId = Storage.retrieveStoredIds().opponentId;
 
         Connection.init(callbacks);
     });

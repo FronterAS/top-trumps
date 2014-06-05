@@ -27,6 +27,14 @@ app
             return ids;
         };
 
+        this.clear = function () {
+            var idTypes = ['opponentId', 'myId'];
+
+            idTypes.forEach(function (idType) {
+                $window.localStorage.removeItem(idType);
+            });
+        };
+
         this.saveMyId = function (id) {
             $window.localStorage.setItem('myId', id);
             return id;
