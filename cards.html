@@ -1,14 +1,14 @@
 <ul id="cards">
-    <li id="my-card">
+    <li id="my-card" class="card">
         <ul>
-            <li>{{myCard.age}}</li>
-            <li>{{myCard.height}}</li>
+            <li class="value value1">Age: {{myCard.age}}</li>
+            <li class="value value2">Height: {{myCard.height}}</li>
         </ul>
     </li>
-    <li id="your-card">
+    <li id="your-card" class="card" ng-if="yourCard">
         <ul>
-            <li>{{yourCard.age}}</li>
-            <li>{{yourCard.height}}</li>
+            <li class="value value1">Age: {{yourCard.age}}</li>
+            <li class="value value2">Height: {{yourCard.height}}</li>
         </ul>
     </li>
 </ul>

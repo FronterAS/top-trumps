@@ -1,0 +1,35 @@
+.card {
+    background-image: url("card.jpg");
+    background-repeat: no-repeat;
+
+    width: 390px;
+    height: 600px;
+
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+}
+
+ul {
+    list-style: none;
+}
+
+.value {
+    position: absolute;
+    color: white;
+    font-weight: bold;
+
+    -webkit-transform:rotate(-3deg); /* Opera, Chrome, and Safari */
+    -ms-transform:rotate(-3deg); /* IE 9 */
+    transform:rotate(-3deg);
+}
+
+.value1 {
+    top: 353px;
+    left: 188px;
+}
+
+.value2 {
+    top: 386px;
+    left: 226px;
+}

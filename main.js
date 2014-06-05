@@ -58,7 +58,7 @@ angular.module('game', [])
 
                         // When the connection is opened...
                         $scope.conn.on('open', function () {
-                            $scope.status = 'Connected to ' + peerId;
+                            $scope.status = 'Connected to ' + conn.peer;
                             $scope.$apply();
                         });
                     };
