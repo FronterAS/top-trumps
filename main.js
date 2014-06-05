@@ -87,7 +87,10 @@ angular.module('game', [])
                         $scope.$apply();
                     });
 
-                    $scope.conn = $scope.peer.connect(conn.peer);
+                    // This will only work for a one on one game
+                    if (!$scope.conn) {
+                        $scope.conn = $scope.peer.connect(conn.peer);
+                    }
 
                     $scope.status = 'Someone connected to you!';
                     $scope.connected = true;
