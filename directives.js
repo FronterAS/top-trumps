@@ -42,11 +42,18 @@ app.directive('status', function () {
                     $scope.$emit(GameEvents.PROPERTY_CHOSEN, propertyName);
                 };
 
-                $scope.imageUrl = $scope.data.imageUrl;
+                // Opponents have not sent their card data yet.
+                if ($scope.data) {
+                    $scope.imageUrl = $scope.data.imageUrl;
+                }
             },
 
             link: function (scope, element) {
+                element.addClass('card-directive');
 
+                scope.$watch('data', function (value) {
+                    debugger;
+                });
             }
         };
     })

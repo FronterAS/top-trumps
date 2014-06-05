@@ -5,7 +5,7 @@ app.service('Utils', function ($q) {
 
     this.makeCard = function () {
         // found in images folder i.e. oldie-[*].jpg
-        var numOfImages = 11;
+        var numOfImages = 10;
 
         return {
             'cardDetails': {

@@ -68,7 +68,9 @@ app.controller('MainController',
                 });
 
                 $scope.$on(GameEvents.CARD_RECEIVED_FROM_OPPONENT, function (event, cardData) {
-                    $scope.opponentCard = cardData.cardDetails;
+                    // Setting the opponent card is important for the opponent's card
+                    // to display correctly in it's card directive.
+                    $scope.opponentCard = cardData;
 
                     flipOpponentsCard(true);
 

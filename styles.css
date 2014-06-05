@@ -1,4 +1,4 @@
-card {
+.card-directive {
     display: inline-block;
     vertical-align: top;
 }
@@ -42,8 +42,9 @@ ul {
     padding: 2px 9px;
 
     -webkit-transform:rotate(-3deg); /* Opera, Chrome, and Safari */
-    -ms-transform:rotate(-3deg); /* IE 9 */
-    transform:rotate(-3deg);
+        -ms-transform:rotate(-3deg); /* IE 9 */
+            transform:rotate(-3deg);
+
     text-transform: capitalize;
 }
 
