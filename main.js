@@ -9,7 +9,8 @@ angular.module('game', [])
 
         $scope.makeCard = function () {
             return {
-                'value': makeNumber()
+                'age': makeNumber(),
+                'height': makeNumber()
             };
         };
 
