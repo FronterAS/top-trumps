@@ -7,9 +7,9 @@
 
 /* flip speed goes here */
 .card-container {
-    -webkit-transition: 0.6s;
-       -moz-transition: 0.6s;
-            transition: 0.6s;
+    -webkit-transition: 0.4s;
+       -moz-transition: 0.4s;
+            transition: 0.4s;
 
     -webkit-transform-style: preserve-3d;
        -moz-transform-style: preserve-3d;

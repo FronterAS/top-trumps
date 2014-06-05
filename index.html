@@ -11,9 +11,10 @@
     <body ng-controller="MainController">
 
         <div ng-hide="myId">Getting a personality</div>
-        <connection ng-show="myId"></connection>
 
-        <div ng-if="myId">
+        <div ng-show="myId">
+            <connection></connection>
+            <scores></scores>
             <cards ng-if="connected"></cards>
         </div>
 

@@ -1,4 +1,4 @@
-.card-directive {
+card {
     display: inline-block;
     vertical-align: top;
 }
@@ -14,6 +14,13 @@
     background-repeat: no-repeat;
     position: relative;
     font-family: "Comic Sans MS", cursive, sans-serif
+}
+
+.card-image {
+    width: 329px;
+    position: absolute;
+    top: 85px;
+    left: 23px;
 }
 
 .card.front {
@@ -67,4 +74,11 @@ ul {
 .my-go-marker {
     color: white;
     background: red;
+}
+
+.scores-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 25px;
 }

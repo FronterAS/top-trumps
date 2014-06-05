@@ -41,10 +41,19 @@ app.directive('status', function () {
                 $scope.chooseProperty = function (propertyName) {
                     $scope.$emit(GameEvents.PROPERTY_CHOSEN, propertyName);
                 };
+
+                $scope.imageUrl = $scope.data.imageUrl;
             },
 
             link: function (scope, element) {
-                element.addClass('card-directive');
+
             }
+        };
+    })
+
+    .directive('scores', function () {
+        return {
+            restrict: 'E',
+            templateUrl: 'scores.html'
         };
     });

@@ -1,6 +1,8 @@
-<h2>My id: {{myId}}</h2>
-<status></status>
-<div ng-hide="connected">
-    <input type="text" ng-model="opponentId" />
-    <button ng-click="connect(opponentId)">Connect</button>
-</div>
+<section class="connection-interface">
+    <h2>My id: {{myId}}</h2>
+    <status></status>
+    <div ng-hide="connected">
+        <input type="text" ng-model="opponentId" />
+        <button ng-click="connect(opponentId)">Connect</button>
+    </div>
+</section>
