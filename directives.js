@@ -35,6 +35,14 @@ app.directive('status', function () {
             },
 
             // to have nested templates one needs to use the templateCache
-            templateUrl: 'card.html'
+            templateUrl: 'card.html',
+
+            controller: function ($scope, GameEvents) {
+                $scope.chooseProperty = function (propertyName) {
+                    $scope.$emit(GameEvents.PROPERTY_CHOSEN, propertyName);
+                };
+            },
+
+            link: function (scope, element) {}
         };
     });

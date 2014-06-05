@@ -1,20 +1,5 @@
 // Remember that service is a singleton
-app
-
-    .service('Utils', function () {
-        var makeNumber = function () {
-                return Math.floor(Math.random() * 10);
-            };
-
-        this.makeCard = function () {
-            return {
-                'age': makeNumber(),
-                'height': makeNumber()
-            };
-        };
-    })
-
-    .service('Storage', function ($window) {
+app.service('Storage', function ($window) {
         this.retrieveStoredIds = function () {
             var opponentId = $window.localStorage.getItem('opponentId'),
                 myId = $window.localStorage.getItem('myId'),

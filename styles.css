@@ -1,15 +1,27 @@
+.card-wrapper,
 .card {
-    background-image: url("card.jpg");
-    background-repeat: no-repeat;
-
     width: 390px;
     height: 600px;
+}
+
+
+.card {
+    background-repeat: no-repeat;
+
 
     display: inline-block;
     vertical-align: top;
     position: relative;
 
     font-family: "Comic Sans MS", cursive, sans-serif
+}
+
+.card.front {
+    background-image: url("images/card-bg.png");
+}
+
+.card.back {
+    background-image: url("images/card-back.png");
 }
 
 ul {
@@ -20,25 +32,36 @@ ul {
     position: absolute;
     color: white;
     font-weight: bold;
+    padding: 2px 9px;
 
     -webkit-transform:rotate(-3deg); /* Opera, Chrome, and Safari */
     -ms-transform:rotate(-3deg); /* IE 9 */
     transform:rotate(-3deg);
+    text-transform: capitalize;
+}
+
+.my-go .value {
     cursor: pointer;
 }
 
-.value:hover {
+.my-go .value:hover {
     background: red;
 }
 
+#my-card .card.back {
+    display: none;
+}
+
 .value-0 {
-    top: 351px;
-    left: 188px;
+    top: 346px;
+    left: 178px;
+    width: 155px;
 }
 
 .value-1 {
-    top: 383px;
-    left: 226px;
+    top: 377px;
+    left: 217px;
+    width: 114px;
 }
 
 .my-go-marker {

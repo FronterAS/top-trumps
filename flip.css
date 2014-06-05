@@ -1,0 +1,38 @@
+/* entire container, keeps perspective */
+.card-wrapper {
+    perspective: 1000;
+}
+
+/* flip the pane when hovered */
+.card-container:hover .card-container,
+.card-container.hover .card-container {
+    transform: rotateY(180deg);
+}
+
+/* flip speed goes here */
+.card-container {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+
+    position: relative;
+}
+
+/* hide back of pane during swap */
+.front,
+.back {
+    backface-visibility: hidden;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+    z-index: 2;
+}
+
+/* back, initially hidden pane */
+.back {
+    transform: rotateY(180deg);
+}

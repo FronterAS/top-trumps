@@ -1,5 +1,15 @@
-<li class="card">
-    <ul class="card-properties">
-        <li ng-repeat="(prop, value) in data" class="value value-{{$index}} age">{{prop}}: {{value}}</li>
-    </ul>
+<li class="card-wrapper">
+    <div class="card-container">
+        <div class="card front">
+            <ul class="card-properties">
+                <li
+                    ng-repeat="(prop, value) in data"
+                    ng-click="chooseProperty(prop)"
+                    class="value value-{{$index}} age">
+                    {{prop}}: {{value}}
+                </li>
+            </ul>
+        </div>
+        <div class="card back"></div>
+    </div>
 </li>

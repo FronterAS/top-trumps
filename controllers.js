@@ -1,5 +1,31 @@
-app.controller('MainController', function ($scope, Events, Utils, Storage, Connection) {
-    var callbacks = Events($scope);
+app.controller('MainController', function ($scope, GameEvents, ConnectionEvents, Utils, Storage, Connection) {
+    var callbacks = ConnectionEvents($scope),
+
+        sendCard = function () {
+            $scope.status = 'Sending a card';
+
+            Connection.sendData('card', {
+                'chosenProperty': $scope.chosenProperty,
+                'card': $scope.myCard
+            });
+        }
+
+        nextTurn = function (wonLastRound) {
+            $scope.win    = null;
+            $scope.myGo   = wonLastRound;
+            $scope.myCard = Utils.makeCard();
+            sendCard();
+        },
+
+        displayResult = function (win) {
+            $scope.state = win ? 'You win' : win === null ? 'You drew' : 'You lost';
+
+            $scope.status = $scope.state;
+
+            $timeout(function () {
+                nextTurn();
+            }, 1500);
+        };
 
     // Click connect button and fire this
     $scope.connect = function (opponentId) {
@@ -9,23 +35,41 @@ app.controller('MainController', function ($scope, Events, Utils, Storage, Conne
         $scope.myGo = true;
     };
 
-    // Send the card!
-    $scope.sendCard = function () {
-        $scope.status = 'Sending a card';
-
-        Connection.sendData('card', $scope.myCard);
-    };
-
     // Create your first card.
-    $scope.myCard     = Utils.makeCard();
-    $scope.myGo       = false;
-    $scope.connnected = false;
+    $scope.myCard         = Utils.makeCard();
+    $scope.myGo           = false;
+    $scope.connected      = false;
+    $scope.chosenProperty = null;
 
-    // You can clear out the storage
+    // It might not exist in storage, but if it does the last person you played will be already
+    // entered in the connection id input.
+    // You can clear out the storage if it's annoying you. See below for more detail.
+    // Just uncomment the following line.
     // Storage.clear();
-
-    // It might not exist, but if it does it will save you some time.
     $scope.opponentId = Storage.retrieveStoredIds().opponentId;
+
+    $scope.$on(GameEvents.READY_TO_PLAY, function (event) {
+        $scope.status = 'Opponent is ready to play';
+    });
+
+    $scope.$on(GameEvents.PROPERTY_CHOSEN, function (event, propertyName) {
+        if ($scope.myGo) {
+            $scope.status = 'You chose to play with ' + propertyName;
+            sendCard();
+        }
+    });
+
+    $scope.$on(GameEvents.CARD_RECEIVED_FROM_OPPONENT, function (event, cardData) {
+        $scope.opponentCard = cardData.card;
+
+        debugger;
+
+        /*Utils.calculateWinner(
+            cardData.chosenProperty,
+            cardData.card,
+            $scope.myCard
+        ).then(displayResult);*/
+    });
 
     Connection.init(callbacks);
 });

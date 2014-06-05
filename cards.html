@@ -1,9 +1,8 @@
 <div ng-if="myGo">
-    <button ng-click="sendCard()">Send</button>
-    <span class="my-go-marker">My go!</span>
+    <span class="my-go-marker">Your go!</span>
 </div>
 
-<ul id="cards">
+<ul id="cards" ng-class="{'my-go': myGo}">
     <card id="my-card" ng-if="myCard" data="myCard"></card>
-    <card id="your-card" ng-if="yourCard" data="yourCard"></card>
+    <card id="opponent-card" ng-if="opponentCard" data="opponentCard"></card>
 </ul>

@@ -1,4 +1,4 @@
-app.factory('Events', function () {
+app.factory('ConnectionEvents', function (GameEvents) {
     return function ($scope) {
         return {
             onRegisterIdWithPeerServer: function (id) {
@@ -15,30 +15,32 @@ app.factory('Events', function () {
                     'value': $scope.myGo
                 });
 
-                $scope.status = 'Someone connected to you!';
+                $scope.status = 'Opponent connected to you!';
                 $scope.$apply();
             },
 
             onDataReceivedFromPeer: function (data) {
-                $scope.status = 'Ta da, a message came in!';
+                $scope.status = 'Data receieved from opponent';
 
                 switch (data.type) {
                     case 'turnCheck':
-                        // check the turn against the handshake
+                        // Check whose turn it is against the handshake data
+                        // hacky as shit but it fucking well works :)
                         $scope.myGo = !data.value;
                         break;
 
                     case 'card':
-                        $scope.yourCard = data.value;
+                        $scope.$emit(GameEvents.CARD_RECEIVED_FROM_OPPONENT, data.value);
+                        break;
                 }
-
 
                 $scope.$apply();
             },
 
             onConnectionToPeerSuccess: function (conn) {
-                $scope.status = 'Connected to ' + conn.peer;
+                $scope.status    = 'Connected to ' + conn.peer;
                 $scope.connected = true;
+                $scope.$emit(GameEvents.READY_TO_PLAY);
                 $scope.$apply();
             }
         };
