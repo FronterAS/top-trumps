@@ -7,8 +7,14 @@
         <script src="peer.js"></script>
     </head>
     <body ng-controller="MainController">
-        <messager></messager>
-        <cards></cards>
+
+        <div ng-if="myId">
+            <messager></messager>
+            <cards></cards>
+        </div>
+
+        <div ng-hide="myId">Getting a personality</div>
+
         <script src="main.js"></script>
     </body>
 </html>

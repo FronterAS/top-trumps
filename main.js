@@ -2,18 +2,29 @@
 
 angular.module('game', [])
     .controller('MainController', function ($scope) {
-        $scope.makeNumber = function () {
-            return Math.floor(Math.random() * 10);
-        };
+        var makeNumber = function () {
+                return Math.floor(Math.random() * 10);
+            };
 
         $scope.makeCard = function () {
             return {
-                'value': $scope.makeNumber();
+                'value': makeNumber()
             };
         };
 
+        // This is you
+        $scope.peer = new Peer({key: '6cvuigpzcc0ltyb9'});
+        // This is when you have registered with the peerjs server
+        $scope.peer.on('open', function (id) {
+            $scope.status = 'My peer ID is: ' + id;
+            $scope.myId = id;
+
+            $scope.$apply();
+        });
+
         $scope.myCard = $scope.makeCard();
     })
+
     .directive('cards', function () {
         return {
             restrict: 'E',
@@ -22,32 +33,14 @@ angular.module('game', [])
             link: function (scope) {}
         };
     })
+
     .directive('messager', function () {
         return {
             restrict: 'E',
 
-            template: '<h2>{{myId}}</h2>' +
-                '<div>' +
-                    '<input type="text" ng-model="peerId" />' +
-                    '<button ng-click="connect(peerId)">Connect</button>' +
-                '</div>'+
-                '<div>' +
-                    '<button ng-click="send()">Send</button>' +
-                '</div>'+
-                '<div>{{status}}</div>' +
-                '<div>{{receivedMessage}}</div>',
+            templateUrl: 'gameboard.html',
 
             controller: function ($scope) {
-                // This is you
-                $scope.peer = new Peer({key: '6cvuigpzcc0ltyb9'});
-
-                // This is when you open a connection to someone else
-                $scope.peer.on('open', function (id) {
-                    $scope.status = 'My peer ID is: ' + id;
-                    $scope.myId = id;
-                    $scope.$apply();
-                });
-
                 // Click connect button and fire this
                 $scope.connect = function (peerId) {
                     $scope.status = 'Connecting to ' + peerId;
@@ -56,6 +49,8 @@ angular.module('game', [])
                     $scope.conn = $scope.peer.connect(peerId);
 
                     if ($scope.conn) {
+                        $scope.connected = true;
+
                         // Outgoing messages TO someone
                         $scope.conn.on('open', function () {
                             $scope.status = 'Connected to ' + peerId;
@@ -72,8 +67,8 @@ angular.module('game', [])
                     }
                 };
 
-                // send the messages!
-                $scope.send = function () {
+                // Send the card!
+                $scope.sendCard = function () {
                     if (!$scope.conn) {
                         $scope.status = 'No connection set up silly pants!';
                         return;
@@ -85,13 +80,19 @@ angular.module('game', [])
 
                 // Incoming messages FROM someone
                 $scope.peer.on('connection', function (conn) {
-                    console.log('Someone connected to you!');
-
+                    // When I recieve a card, I send mine back.
                     conn.on('data', function (data) {
-                        console.log(data);
-                        $scope.receivedMessage = data;
+                        $scope.status = 'Data receieved';
+                        $scope.yourCard = data;
                         $scope.$apply();
                     });
+
+                    $scope.conn = $scope.peer.connect(conn.peer);
+
+                    $scope.status = 'Someone connected to you!';
+                    $scope.connected = true;
+
+                    $scope.$apply();
                 });
             },
 

@@ -1,0 +1,10 @@
+<h2>My id: {{myId}}</h2>
+<div ng-hide="connected">
+    <input type="text" ng-model="peerId" />
+    <button ng-click="connect(peerId)">Connect</button>
+    <span>{{status}}</span>
+</div>
+<div>
+    <button ng-click="sendCard()">Send</button>
+</div>
+<div>{{receivedMessage}}</div>
