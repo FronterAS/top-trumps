@@ -10,12 +10,15 @@
     <body ng-controller="MainController">
 
         <div ng-hide="myId">Getting a personality</div>
-        <connection-manager ng-show="myId"></connection-manager>
+        <connection ng-show="myId"></connection>
 
         <div ng-if="myId">
             <cards ng-if="connected"></cards>
         </div>
 
         <script src="main.js"></script>
+        <script src="services.js"></script>
+        <script src="directives.js"></script>
+        <script src="controllers.js"></script>
     </body>
 </html>
