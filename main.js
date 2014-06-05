@@ -41,6 +41,14 @@ angular.module('game', [])
             templateUrl: 'gameboard.html',
 
             controller: function ($scope) {
+                var setupConnData = function () {
+                        $scope.conn.on('data', function (data) {
+                            $scope.status = 'Ta da, a message came in!';
+                            $scope.yourCard = data;
+                            $scope.$apply();
+                        });
+                    };
+
                 // Click connect button and fire this
                 $scope.connect = function (peerId) {
                     $scope.status = 'Connecting to ' + peerId;
@@ -57,10 +65,7 @@ angular.module('game', [])
                             $scope.$apply();
                         });
 
-                        $scope.conn.on('data', function (data) {
-                            $scope.status = 'Ta da, a message came in!';
-                            $scope.receivedMessage = data;
-                        });
+                        setupConnData();
 
                     } else {
                         $scope.status = 'Your connection suffered a case of being totally shit.';
@@ -80,16 +85,11 @@ angular.module('game', [])
 
                 // Incoming messages FROM someone
                 $scope.peer.on('connection', function (conn) {
-                    // When I recieve a card, I send mine back.
-                    conn.on('data', function (data) {
-                        $scope.status = 'Data receieved';
-                        $scope.yourCard = data;
-                        $scope.$apply();
-                    });
 
                     // This will only work for a one on one game
                     if (!$scope.conn) {
-                        $scope.conn = $scope.peer.connect(conn.peer);
+                        $scope.conn = conn;
+                        setupConnData();
                     }
 
                     $scope.status = 'Someone connected to you!';
