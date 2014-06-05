@@ -50,10 +50,6 @@ app.directive('status', function () {
 
             link: function (scope, element) {
                 element.addClass('card-directive');
-
-                scope.$watch('data', function (value) {
-                    debugger;
-                });
             }
         };
     })
