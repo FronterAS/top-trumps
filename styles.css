@@ -1,3 +1,8 @@
+.card-directive {
+    display: inline-block;
+    vertical-align: top;
+}
+
 .card-wrapper,
 .card {
     width: 390px;
@@ -7,12 +12,7 @@
 
 .card {
     background-repeat: no-repeat;
-
-
-    display: inline-block;
-    vertical-align: top;
     position: relative;
-
     font-family: "Comic Sans MS", cursive, sans-serif
 }
 

@@ -3,6 +3,7 @@
 </div>
 
 <ul id="cards" ng-class="{'my-go': myGo}">
-    <card id="my-card" ng-if="myCard" data="myCard"></card>
-    <card id="opponent-card" ng-if="opponentCard" data="opponentCard"></card>
+    <card id="my-card" data="myCard"></card>
+    <!-- foreach opponents will go here -->
+    <card class="opponent-card" data="opponentCard"></card>
 </ul>

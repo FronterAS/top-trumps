@@ -43,6 +43,8 @@ app.directive('status', function () {
                 };
             },
 
-            link: function (scope, element) {}
+            link: function (scope, element) {
+                element.addClass('card-directive');
+            }
         };
     });

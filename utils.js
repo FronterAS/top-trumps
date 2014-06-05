@@ -1,12 +1,12 @@
 app.service('Utils', function ($q) {
-    var makeNumber = function () {
-            return Math.floor(Math.random() * 10);
+    var makeNumber = function (multiplier) {
+            return Math.floor(Math.random() * (multiplier || 10));
         };
 
     this.makeCard = function () {
         return {
-            'age': makeNumber(),
-            'height': makeNumber()
+            'age': makeNumber(200),
+            'height': makeNumber(100)
         };
     };
 
@@ -16,6 +16,6 @@ app.service('Utils', function ($q) {
             null :
             opponentCard[property] > myCard[property]
 
-        return $q.when();
+        return $q.when(winLoseDraw);
     };
 })
