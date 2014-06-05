@@ -1,3 +1,4 @@
+/*global Peer */
 'use strict';
 
 angular.module('game', [])
@@ -14,17 +15,6 @@ angular.module('game', [])
             };
         };
 
-        // This is you
-        $scope.peer = new Peer({key: '6cvuigpzcc0ltyb9'});
-        // This is when you have registered with the peerjs server
-        // All users will run this code and become peers.
-        $scope.peer.on('open', function (id) {
-            $scope.status = 'My peer ID is: ' + id;
-            $scope.myId = id;
-
-            $scope.$apply();
-        });
-
         // Create your first card.
         $scope.myCard = $scope.makeCard();
     })
@@ -32,17 +22,15 @@ angular.module('game', [])
     .directive('cards', function () {
         return {
             restrict: 'E',
-            templateUrl: 'cards.html',
-            controller: function ($scope) {},
-            link: function (scope) {}
+            templateUrl: 'cards.html'
         };
     })
 
-    .directive('messager', function () {
+    .directive('connectionManager', function () {
         return {
             restrict: 'E',
 
-            templateUrl: 'gameboard.html',
+            templateUrl: 'connection-interface.html',
 
             controller: function ($scope) {
                 var bindConnection = function (conn) {
@@ -59,6 +47,28 @@ angular.module('game', [])
                         // When the connection is opened...
                         $scope.conn.on('open', function () {
                             $scope.status = 'Connected to ' + conn.peer;
+                            $scope.$apply();
+                        });
+                    },
+
+                    createPeer = function () {
+                        // This is you
+                        $scope.peer = new Peer({key: '6cvuigpzcc0ltyb9'});
+
+                        // This is when you have registered with the peerjs server
+                        // All users will run this code and become peers.
+                        $scope.peer.on('open', function (id) {
+                            $scope.status = 'My peer ID is: ' + id;
+                            $scope.myId = id;
+
+                            $scope.$apply();
+                        });
+
+                        // When someone else connects to you, the connection event is thrown.
+                        $scope.peer.on('connection', function (conn) {
+                            bindConnection(conn);
+
+                            $scope.status = 'Someone connected to you!';
                             $scope.$apply();
                         });
                     };
@@ -81,13 +91,9 @@ angular.module('game', [])
                     $scope.conn.send($scope.myCard);
                 };
 
-                // When someone else connects to you, the connection event is thrown.
-                $scope.peer.on('connection', function (conn) {
-                    bindConnection(conn);
+                $scope.connnected = false;
 
-                    $scope.status = 'Someone connected to you!';
-                    $scope.$apply();
-                });
+                createPeer();
             },
 
             link: function (scope) {
@@ -96,7 +102,7 @@ angular.module('game', [])
                     if (value !== undefined) {
                         console.log(value);
                     }
-                })
+                });
             }
         };
     });

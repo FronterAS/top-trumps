@@ -9,12 +9,12 @@
     </head>
     <body ng-controller="MainController">
 
-        <div ng-if="myId">
-            <messager></messager>
-            <cards></cards>
-        </div>
-
         <div ng-hide="myId">Getting a personality</div>
+        <connection-manager ng-show="myId"></connection-manager>
+
+        <div ng-if="myId">
+            <cards ng-if="connected"></cards>
+        </div>
 
         <script src="main.js"></script>
     </body>
