@@ -32,10 +32,34 @@ body {
     font-family: Oxygen;
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-body {
+header {
+    text-align: center;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    background: black;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    left: 0;
+    color: white;
+}
+
+#game-wrapper {
     padding: 40px 10px 10px 10px;
+}
+
+#cards {
+    margin: 0;
+    padding: 0;
 }
 
 .card-directive {
@@ -43,25 +67,30 @@ body {
     vertical-align: top;
 }
 
+.status-directive {
+    font-size: 0.7em;
+}
+
 .card-wrapper,
 .card {
-    width: 390px;
-    height: 600px;
+    overflow: hidden;
+    width: 329px;
+    height: 525px;
 }
 
 
 .card {
     background-repeat: no-repeat;
     position: relative;
-    font-family: "Comic Sans MS", cursive, sans-serif
 }
 
 .card-image {
+    position: absolute;
+    top: 60px;
+    left: 15px;
+
     width: 327px;
     height: 260px;
-    position: absolute;
-    top: 84px;
-    left: 23px;
 
     background-size: cover;
     background-repeat: no-repeat;
@@ -105,21 +134,15 @@ ul {
 }
 
 .value-0 {
-    top: 351px;
-    left: 166px;
-    width: 160px;
+    top: 304px;
+    left: 146px;
+    width: 159px;
 }
 
 .value-1 {
-    top: 381px;
-    left: 178px;
-    width: 160px;
-}
-
-.value-2 {
-    top: 418px;
-    left: 184px;
-    width: 160px;
+    top: 336px;
+    left: 183px;
+    width: 123px;
 }
 
 .value-3 {
@@ -133,8 +156,7 @@ ul {
     background: red;
 }
 
-#application-header,
-.scores-directive {
+#application-header {
     position: fixed;
     left: 0;
 
@@ -144,7 +166,7 @@ ul {
 
     background: black;
     color: white;
-    font-size: 0.5em;
+
     z-index: 1000;
 }
 
@@ -154,22 +176,43 @@ ul {
     padding: 10px;
 }
 
-.scores-directive {
-    height: 30px;
-    bottom: 0;
-}
 
 .app-heading,
+.my-id,
 .scores-header {
     margin: 0;
 }
 
-header {
-    text-align: center;
+.scores-directive {
+
 }
 
 .scores-header,
+.scores-container,
+.score-container {
+    margin: 0;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.app-heading,
+.my-id {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 1em;
+}
+
+.score-container {
+    text-align: center;
+    position: relative;
+    margin: 0 20px;
+    font-size: 0.8em;
+}
+
 .score-header,
 .score-value {
-    display: inline-block;
+    display: block;
+    margin: 0;
+    width: 100%;
+    text-align: center;
 }

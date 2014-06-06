@@ -10,17 +10,24 @@
     </head>
     <body ng-controller="MainController">
 
-        <div ng-hide="myId">Getting a personality</div>
+        <div id="game-wrapper">
+            <div ng-hide="myId">Getting a personality</div>
 
-        <div ng-show="myId">
-            <header id="application-header">
-                <h1 class="app-heading">Top trumps</h1>
-            </header>
-            <connection></connection>
+            <div ng-show="myId" id="game-container">
+                <header id="application-header">
+                    <h1 class="app-heading">Top trumps</h1>
+                    <h2 class="my-id"> | My id: {{myId}}</h2>
+                </header>
+                <connection></connection>
 
-            <div id="game" ng-if="connected">
-                <cards></cards>
-                <scores></scores>
+                <div id="game" ng-if="connected">
+                    <cards></cards>
+                </div>
+
+                <footer>
+                    <scores></scores>
+                    <status></status>
+                </footer>
             </div>
         </div>
 

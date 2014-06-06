@@ -1,8 +1,9 @@
 app.directive('status', function () {
         return {
             restrict: 'E',
-            template: '<span>{{status}}</span>',
-            link: function (scope) {
+            templateUrl: 'partials/status.html',
+            link: function (scope, element) {
+                element.addClass('status-directive');
                 // Use ($)scope.status to print to console log and add a message to the screen.
                 scope.$watch('status', function (value) {
                     if (value !== undefined) {
@@ -16,14 +17,14 @@ app.directive('status', function () {
     .directive('connection', function () {
         return {
             restrict: 'E',
-            templateUrl: 'connection-interface.html'
+            templateUrl: 'partials/connection-interface.html'
         };
     })
 
     .directive('cards', function () {
         return {
             restrict: 'E',
-            templateUrl: 'cards.html'
+            templateUrl: 'partials/cards.html'
         };
     })
 
@@ -35,7 +36,7 @@ app.directive('status', function () {
             },
 
             // to have nested templates one needs to use the templateCache
-            templateUrl: 'card.html',
+            templateUrl: 'partials/card.html',
 
             controller: function ($scope, GameEvents) {
                 $scope.chooseProperty = function (propertyName) {
@@ -52,7 +53,7 @@ app.directive('status', function () {
     .directive('scores', function () {
         return {
             restrict: 'E',
-            templateUrl: 'scores.html',
+            templateUrl: 'partials/scores.html',
             link: function (scope, element) {
                 element.addClass('scores-directive');
             }
