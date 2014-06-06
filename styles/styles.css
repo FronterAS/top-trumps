@@ -89,7 +89,7 @@ footer {
     top: 60px;
     left: 15px;
 
-    width: 327px;
+    width: 300px;
     height: 260px;
 
     background-size: cover;
@@ -184,10 +184,6 @@ ul {
 .my-id,
 .scores-header {
     margin: 0;
-}
-
-.scores-directive {
-
 }
 
 .scores-header,

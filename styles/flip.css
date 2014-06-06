@@ -18,39 +18,43 @@
     position: relative;
 }
 
-/* hide back of pane during swap */
-.front,
-.back {
-    -webkit-backface-visibility: hidden;
-       -moz-backface-visibility: hidden;
-            backface-visibility: hidden;
-
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-/* front pane, placed above back */
-.front {
-    z-index: 2;
-}
-
-
-/* front, initially hidden pane */
-.opponent-card .front {
-    -webkit-transform: rotateY(180deg);
-       -moz-transform: rotateY(180deg);
-            transform: rotateY(180deg);
-}
-
-/* we don't need our own card to turn */
-#my-card .back {
-    display: none;
-}
-
 /* flip the pane when class applied to body */
 .property-chosen .opponent-card .card-container {
     -webkit-transform: rotateY(180deg);
        -moz-transform: rotateY(180deg);
             transform: rotateY(180deg);
+}
+
+/* hide back of pane during swap */
+.front,
+.back,
+.card-image {
+    -webkit-backface-visibility: hidden;
+       -moz-backface-visibility: hidden;
+            backface-visibility: hidden;
+}
+
+.front,
+.back {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* front, initially hidden pane */
+.opponent-card .front {
+    -webkit-transform: rotateY(180deg) translateZ(1px);
+       -moz-transform: rotateY(180deg) translateZ(1px);
+            transform: rotateY(180deg) translateZ(1px);
+}
+
+.opponent-card .card-image {
+    -webkit-transform: rotateY(180deg) translateZ(0px);
+       -moz-transform: rotateY(180deg) translateZ(0px);
+            transform: rotateY(180deg) translateZ(0px);
+}
+
+/* we don't need our own card to turn */
+#my-card .back {
+    display: none;
 }
