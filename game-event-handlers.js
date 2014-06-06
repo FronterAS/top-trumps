@@ -9,31 +9,45 @@ app.factory('GameEventHandlers', function ($timeout, Utils) {
                 flipOpponentsCard();
 
                 $scope.win    = null;
-                $scope.myGo   = wonLastRound;
+
+                //wonLastRound == 1 if won, 0 if draw, -1 if lost
+                if (wonLastRound !== 0) {
+                    $scope.myGo = wonLastRound === 1 ? true : false;
+                }
                 $scope.myCard = Utils.makeCard();
             },
 
-            handleResult = function (whoOne) {
+            handleResult = function (whoWon) {
                 var winner;
 
                 // draw logic
-                if (whoOne === 'draw') {
-                    $scope.status = 'You drew';
+                if (whoWon === 'draw') {
+                    $scope.status = 'Draw!';
+                    winner = 0;
+
+                    $scope.drawScore += 1;
+
+                    $timeout(function () {
+                        nextTurn(winner); //needs to be the same person
+                    }, 2500);
+
 
                 // win lose logic
                 } else {
-                    winner = whoOne === 'me';
+                    winner = whoWon === 'me' ? 1 : -1;
 
-                    $scope.scores[whoOne] += 1;
+                    $scope.scores[whoWon] += 1;
+                    $scope.scores[whoWon] += $scope.drawScore;
+                    $scope.drawScore = 0;
 
-                    $scope.state = winner ? 'You win' : 'You lost';
+                    $scope.state = winner === 1 ? 'You win' : 'You lost';
 
                     $scope.status = $scope.state;
 
                     // Do we need to celebrate for too long?
                     $timeout(function () {
                         nextTurn(winner);
-                    }, 3500);
+                    }, 2500);
                 }
             },
 
@@ -47,6 +61,7 @@ app.factory('GameEventHandlers', function ($timeout, Utils) {
                 $scope.myCard         = Utils.makeCard();
                 $scope.win            = null;
                 $scope.state          = null;
+                $scope.drawScore      = 0;
 
                 // $scope.myGo is initialised in the main controller
 
