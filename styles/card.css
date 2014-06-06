@@ -72,8 +72,12 @@
     margin: 0;
 }
 
-.card-description-title {
-    margin: 0;
+.card-description-title,
+.card-description-paragraph {
+    margin: 5px;
+}
+.card-description-paragraph {
+    font-size: 0.8em;
 }
 
 .card-image {

@@ -9,7 +9,8 @@
 
             <section class="card-description">
                 <h4 class="card-description-title">{{data.description.title}}</h4>
-                <p ng-repeat="paragraph in data.description.paragraphs">{{paragraph}}</p>
+                <p class="card-description-paragraph"
+                    ng-repeat="paragraph in data.description.paragraphs">{{paragraph}}</p>
             </section>
 
             <ul class="card-properties">
