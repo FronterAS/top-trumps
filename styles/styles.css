@@ -74,7 +74,7 @@ footer {
 .card-wrapper,
 .card {
     overflow: hidden;
-    width: 329px;
+    width: 326px;
     height: 525px;
 }
 
@@ -129,6 +129,14 @@ ul {
     background: red;
 }
 
+.my-go-marker {
+    color: white;
+    display: block;
+    background: red;
+    padding: 5px;
+    float: right;
+}
+
 #my-card .card.back {
     display: none;
 }
@@ -149,11 +157,6 @@ ul {
     top: 455px;
     left: 191px;
     width: 160px;
-}
-
-.my-go-marker {
-    color: white;
-    background: red;
 }
 
 #application-header {

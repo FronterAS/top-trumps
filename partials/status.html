@@ -1,4 +1,6 @@
-<span>{{status}}</span>
-<div ng-if="myGo">
-    <span class="my-go-marker">Your go!</span>
-</div>
+<section id="status-container">
+    <span class="status">{{status}}</span>
+    <span ng-if="myGo" class="my-go-container">
+        <span class="my-go-marker">Your go!</span>
+    </span>
+</section>
