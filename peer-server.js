@@ -1,7 +1,7 @@
 var PeerServer = require('peer').PeerServer,
 
     program  = require('commander')
-        .version('0.0.1')
+        .version('0.0.2')
         .option(
             '--path [string]',
             'Git commit hash the shortened version',

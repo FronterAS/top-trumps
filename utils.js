@@ -22,9 +22,12 @@ app.service('Utils', function ($q) {
     // This is going to have to be replaced if the values become more complex
     // or different winning factors have to be taken into consideration.
     this.calculateWinner = function (property, opponentCard, myCard) {
-        var winLoseDraw = opponentCard[property] === myCard[property] ?
-            null :
-            myCard[property] > opponentCard[property]
+        var didIwin = opponentCard[property] === myCard[property] ?
+                null :
+                myCard[property] > opponentCard[property], // true or false
+
+            winLoseDraw = didIwin === null ? 'draw' :
+                didIwin ? 'me' : 'opponent';
 
         return $q.when(winLoseDraw);
     };

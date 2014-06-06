@@ -1,20 +1,11 @@
 app.controller('MainController',
-    function (
-        $scope,
-        $timeout,
-        GameEvents,
-        GameEventHandlers,
-        ConnectionEventHandlers,
-        Storage,
-        Connection
-        ) {
-
+    function ($scope, GameEvents, GameEventHandlers, ConnectionEventHandlers, Storage, Connection) {
         var init = function () {
                 // Setup our connection event handlers
                 $scope.connected = false;
                 Connection.init(ConnectionEventHandlers($scope));
 
-                // Register our game events
+                // Register our game
                 GameEvents.init(GameEventHandlers($scope));
 
                 // It might not exist in storage, but if it does the last person you played will be already

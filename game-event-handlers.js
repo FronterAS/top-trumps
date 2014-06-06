@@ -13,19 +13,28 @@ app.factory('GameEventHandlers', function ($timeout, Utils) {
                 $scope.myCard = Utils.makeCard();
             },
 
-            handleResult = function (didIwin) {
-                var winner = didIwin ? 'me' : 'opponent';
+            handleResult = function (whoOne) {
+                var winner;
 
-                $scope.scores[winner] += 1;
+                // draw logic
+                if (whoOne === 'draw') {
+                    $scope.status = 'You drew';
 
-                $scope.state = didIwin ? 'You win' : didIwin === null ? 'You drew' : 'You lost';
+                // win lose logic
+                } else {
+                    winner = whoOne === 'me';
 
-                $scope.status = $scope.state;
+                    $scope.scores[whoOne] += 1;
 
-                // Do we need to celebrate for too long?
-                $timeout(function () {
-                    nextTurn(didIwin);
-                }, 1500);
+                    $scope.state = winner ? 'You win' : 'You lost';
+
+                    $scope.status = $scope.state;
+
+                    // Do we need to celebrate for too long?
+                    $timeout(function () {
+                        nextTurn(winner);
+                    }, 1500);
+                }
             },
 
             sendCard = function () {
@@ -38,7 +47,8 @@ app.factory('GameEventHandlers', function ($timeout, Utils) {
                 $scope.myCard         = Utils.makeCard();
                 $scope.win            = null;
                 $scope.state          = null;
-                $scope.myGo           = false;
+
+                // $scope.myGo is initialised in the main controller
 
                 $scope.scores = {
                     'me'        : 0,
@@ -62,8 +72,6 @@ app.factory('GameEventHandlers', function ($timeout, Utils) {
 
                     sendCard();
                 }
-
-                $scope.myGo = false;
             },
 
             onCardReceived: function (event, cardData) {
