@@ -11,8 +11,8 @@ app.service('Utils', function ($q) {
             'cardDetails': {
                 'population': makeNumber(1000000),
                 'coastline (km)': makeNumber(500),
-                'area (km2)': makeNumber(30000),
-                'GDP': 1
+                'GDP': 1,
+                'area (km2)': makeNumber(30000)
             },
             'chosenProperty': null,
             'imageUrl': 'images/country-' +
