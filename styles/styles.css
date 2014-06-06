@@ -57,6 +57,14 @@ footer {
     padding: 40px 10px 10px 10px;
 }
 
+#game,
+#game-container,
+#game-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
 #cards {
     margin: 0;
     padding: 0;
@@ -73,13 +81,13 @@ footer {
 
 .card-wrapper,
 .card {
-    overflow: hidden;
     width: 326px;
     height: 525px;
 }
 
 
 .card {
+    overflow: hidden;
     background-repeat: no-repeat;
     position: relative;
 }
