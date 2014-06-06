@@ -65,14 +65,26 @@ ul {
 }
 
 .value-0 {
-    top: 346px;
-    left: 178px;
+    top: 351px;
+    left: 166px;
     width: 155px;
 }
 
 .value-1 {
-    top: 377px;
-    left: 217px;
+    top: 381px;
+    left: 201px;
+    width: 140px;
+}
+
+.value-2 {
+    top: 418px;
+    left: 197px;
+    width: 150px;
+}
+
+.value-3 {
+    top: 440px;
+    left: 288px;
     width: 114px;
 }
 

@@ -9,11 +9,12 @@ app.service('Utils', function ($q) {
 
         return {
             'cardDetails': {
-                'age': makeNumber(200),
-                'height': makeNumber(100)
+                'coastline (km)': makeNumber(500),
+                'population': makeNumber(1000000),
+                'area (km2)': makeNumber(30000)
             },
             'chosenProperty': null,
-            'imageUrl': 'images/oldie-' +
+            'imageUrl': 'images/country-' +
                     (Math.floor(Math.random() * numOfImages)) + '.jpg'
         };
     };

@@ -33,7 +33,7 @@ app.factory('GameEventHandlers', function ($timeout, Utils) {
                     // Do we need to celebrate for too long?
                     $timeout(function () {
                         nextTurn(winner);
-                    }, 1500);
+                    }, 3500);
                 }
             },
 
