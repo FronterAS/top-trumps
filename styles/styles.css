@@ -1,3 +1,43 @@
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+@font-face {
+    font-family: Oxygen;
+    src: url('../fonts/Oxygen/Oxygen-Light.ttf');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Oxygen;
+    src: url('../fonts/Oxygen/Oxygen-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Oxygen;
+    src: url('../fonts/Oxygen/Oxygen-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html,
+body {
+    font-family: Oxygen;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 40px 10px 10px 10px;
+}
+
 .card-directive {
     display: inline-block;
     vertical-align: top;
@@ -93,9 +133,43 @@ ul {
     background: red;
 }
 
-.scores-wrapper {
+#application-header,
+.scores-directive {
     position: fixed;
+    left: 0;
+
+    width: 100%;
+
+    padding: 5px;
+
+    background: black;
+    color: white;
+    font-size: 0.5em;
+    z-index: 1000;
+}
+
+#application-header {
+    height: 40px;
     top: 0;
-    right: 0;
-    padding: 25px;
+    padding: 10px;
+}
+
+.scores-directive {
+    height: 30px;
+    bottom: 0;
+}
+
+.app-heading,
+.scores-header {
+    margin: 0;
+}
+
+header {
+    text-align: center;
+}
+
+.scores-header,
+.score-header,
+.score-value {
+    display: inline-block;
 }

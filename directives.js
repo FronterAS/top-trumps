@@ -52,6 +52,9 @@ app.directive('status', function () {
     .directive('scores', function () {
         return {
             restrict: 'E',
-            templateUrl: 'scores.html'
+            templateUrl: 'scores.html',
+            link: function (scope, element) {
+                element.addClass('scores-directive');
+            }
         };
     });

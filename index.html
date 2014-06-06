@@ -13,9 +13,15 @@
         <div ng-hide="myId">Getting a personality</div>
 
         <div ng-show="myId">
+            <header id="application-header">
+                <h1 class="app-heading">Top trumps</h1>
+            </header>
             <connection></connection>
-            <scores></scores>
-            <cards ng-if="connected"></cards>
+
+            <div id="game" ng-if="connected">
+                <cards></cards>
+                <scores></scores>
+            </div>
         </div>
 
         <script src="app.js"></script>
