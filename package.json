@@ -1,0 +1,23 @@
+{
+  "name": "top-trumps",
+  "version": "0.0.1",
+  "description": "A Fronter game for learning facts about things and stuff",
+  "scripts": {
+    "start": "node peer-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/FronterAS/top-trumps.git"
+  },
+  "author": "Jennifer Arneson, Gavin King",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FronterAS/top-trumps/issues"
+  },
+  "homepage": "https://github.com/FronterAS/top-trumps",
+  "dependencies": {
+    "commander": "^2.2.0",
+    "peer": "^0.2.5"
+  }
+}

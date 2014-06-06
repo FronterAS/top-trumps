@@ -1,4 +1,4 @@
-app.factory('ConnectionEvents', function (GameEvents) {
+app.factory('ConnectionEventHandlers', function (GameEvents) {
     return function ($scope) {
         return {
             onRegisterIdWithPeerServer: function (id) {

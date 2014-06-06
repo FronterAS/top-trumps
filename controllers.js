@@ -1,50 +1,21 @@
 app.controller('MainController',
-    function ($scope, $timeout, GameEvents, ConnectionEvents, Utils, Storage, Connection) {
-        var callbacks = ConnectionEvents($scope),
+    function (
+        $scope,
+        $timeout,
+        GameEvents,
+        GameEventHandlers,
+        ConnectionEventHandlers,
+        Storage,
+        Connection
+        ) {
 
-            flipOpponentsCard = function (show) {
-                show = show || false;
-                angular.element(document.body).toggleClass('property-chosen', show);
-            },
+        var init = function () {
+                // Setup our connection event handlers
+                $scope.connected = false;
+                Connection.init(ConnectionEventHandlers($scope));
 
-            sendCard = function () {
-                $scope.status = 'Sending a card';
-
-                Connection.sendData('card', $scope.myCard);
-            }
-
-            nextTurn = function (wonLastRound) {
-                flipOpponentsCard();
-
-                $scope.win    = null;
-                $scope.myGo   = wonLastRound;
-                $scope.myCard = Utils.makeCard();
-            },
-
-            handleResult = function (didIwin) {
-                var winner = didIwin ? 'me' : 'opponent';
-
-                $scope.scores[winner] += 1;
-
-                $scope.state = didIwin ? 'You win' : didIwin === null ? 'You drew' : 'You lost';
-
-                $scope.status = $scope.state;
-
-                // Do we need to celebrate for too long?
-                $timeout(function () {
-                    nextTurn(didIwin);
-                }, 1500);
-            },
-
-            init = function () {
-                // Create your first card.
-                $scope.myCard         = Utils.makeCard();
-                $scope.myGo           = false;
-                $scope.connected      = false;
-                $scope.scores = {
-                    'me': 0,
-                    'opponent': 0
-                };
+                // Register our game events
+                GameEvents.init(GameEventHandlers($scope));
 
                 // It might not exist in storage, but if it does the last person you played will be already
                 // entered in the connection id input.
@@ -52,54 +23,20 @@ app.controller('MainController',
                 // Just uncomment the following line.
                 // Storage.clear();
                 $scope.opponentId = Storage.retrieveStoredIds().opponentId;
-            },
-
-            bindEvents = function () {
-                $scope.$on(GameEvents.READY_TO_PLAY, function (event) {
-                    $scope.status = 'Opponent is ready to play';
-                });
-
-                $scope.$on(GameEvents.PROPERTY_CHOSEN, function (event, propertyName) {
-                    if ($scope.myGo) {
-                        $scope.status = 'You chose to play with ' + propertyName;
-                        $scope.myCard.chosenProperty = propertyName;
-                        sendCard();
-                    }
-                });
-
-                $scope.$on(GameEvents.CARD_RECEIVED_FROM_OPPONENT, function (event, cardData) {
-                    // Setting the opponent card is important for the opponent's card
-                    // to display correctly in it's card directive.
-                    $scope.opponentCard = cardData;
-
-                    flipOpponentsCard(true);
-
-                    // Avoid an infinite loop yes :)
-                    if (!$scope.myGo) {
-                        sendCard();
-                    }
-
-                    Utils.calculateWinner(
-                        $scope.myGo ? $scope.myCard.chosenProperty : cardData.chosenProperty,
-                        cardData.cardDetails,
-                        $scope.myCard.cardDetails
-                    ).then(handleResult);
-                });
             };
+
+        $scope.sendCard = function (card) {
+            Connection.sendData('card', card);
+        };
 
         // Click connect button and fire this
         $scope.connect = function (opponentId) {
             $scope.opponentId = Connection.connectToPeer(opponentId);
-
             $scope.status = 'Connecting to ' + opponentId;
             $scope.myGo = true;
         };
 
-        // Setup our connection events
-        Connection.init(callbacks);
-
         // Setup our game
         init();
-        bindEvents();
     }
 );

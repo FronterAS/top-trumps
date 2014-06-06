@@ -28,11 +28,11 @@
 }
 
 .card.front {
-    background-image: url("images/card-bg.png");
+    background-image: url("../images/card-bg.png");
 }
 
 .card.back {
-    background-image: url("images/card-back.png");
+    background-image: url("../images/card-back.png");
 }
 
 ul {
