@@ -27,12 +27,6 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: PermanentMarker;
-    src: url('../fonts/Permanent_Marker/PermanentMarker.ttf');
-    font-style: normal;
-}
-
 html,
 body {
     font-family: Oxygen;
@@ -63,20 +57,76 @@ footer {
     padding: 40px 10px 10px 10px;
 }
 
-#game,
-#game-container,
-#game-wrapper {
-    position: relative;
-    height: 100%;
-    width: 100%;
+#cards {
+    margin: 0;
+    padding: 0;
+}
+
+.card-directive {
+    display: inline-block;
+    vertical-align: top;
 }
 
 .status-directive {
     font-size: 0.7em;
 }
 
+.card-wrapper,
+.card {
+    overflow: hidden;
+    width: 326px;
+    height: 525px;
+}
+
+
+.card {
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.card-image {
+    position: absolute;
+    top: 60px;
+    left: 15px;
+
+    width: 327px;
+    height: 260px;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.card.front {
+    background-image: url("../images/card-bg.png");
+}
+
+.card.back {
+    background-image: url("../images/card-back.png");
+}
+
 ul {
     list-style: none;
+}
+
+.value {
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    padding: 2px 9px;
+
+    -webkit-transform:rotate(-3deg); /* Opera, Chrome, and Safari */
+        -ms-transform:rotate(-3deg); /* IE 9 */
+            transform:rotate(-3deg);
+
+    text-transform: capitalize;
+}
+
+.my-go .value {
+    cursor: pointer;
+}
+
+.my-go .value:hover {
+    background: red;
 }
 
 .my-go-marker {
@@ -87,7 +137,36 @@ ul {
     float: right;
 }
 
+#my-card .card.back {
+    display: none;
+}
 
+.value-0 {
+    top: 304px;
+    left: 146px;
+    width: 159px;
+}
+
+.value-1 {
+    top: 336px;
+    left: 183px;
+    width: 123px;
+}
+
+<<<<<<< HEAD
+.value-3 {
+    top: 455px;
+    left: 191px;
+    width: 160px;
+}
+
+.my-go-marker {
+    color: white;
+    background: red;
+}
+
+=======
+>>>>>>> A little tidying up
 #application-header {
     position: fixed;
     left: 0;
@@ -113,6 +192,10 @@ ul {
 .my-id,
 .scores-header {
     margin: 0;
+}
+
+.scores-directive {
+
 }
 
 .scores-header,

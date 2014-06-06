@@ -8,11 +8,21 @@ app.service('Utils', function ($q) {
         var numOfImages = 10;
 
         return {
-            'cardDetails': {
-                'population': makeNumber(1000000),
-                'coastline (km)': makeNumber(500),
-                'GDP': 1,
-                'area (km2)': makeNumber(30000)
+            'cardDetails': [
+                {'name':'population', 'value': makeNumber(1000000)},
+                {'name':'area (km2)', 'value': makeNumber(30000)},
+                {'name':'coastline', 'value': makeNumber(500)},
+                {'name':'something1', 'value': makeNumber(1000)},
+                {'name': 'GDP', 'value': 1},
+                {'name':'something2', 'value': makeNumber(1000)}
+            ],
+            'heading': 'A country',
+            'description': {
+                'title': 'A subtitle',
+                'paragraphs': [
+                    'This is a country of great magnitude.',
+                    'This is another paragraph'
+                ]
             },
             'chosenProperty': null,
             'imageUrl': 'images/country-' +

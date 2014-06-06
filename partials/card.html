@@ -1,16 +1,26 @@
 <li class="card-wrapper">
-    <div class="card-container">
+    <article class="card-container">
+
         <div class="card-image" style="background-image: url('{{data.imageUrl}}');"></div>
         <div class="card front">
+            <header class="card-header">
+                <h3 class="card-heading">{{data.heading}}</h3>
+            </header>
+
+            <section class="card-description">
+                <h4 class="card-description-title">{{data.description.title}}</h4>
+                <p ng-repeat="paragraph in data.description.paragraphs">{{paragraph}}</p>
+            </section>
+
             <ul class="card-properties">
                 <li
-                    ng-repeat="(prop, value) in data.cardDetails"
-                    ng-click="chooseProperty(prop)"
+                    ng-repeat="detail in data.cardDetails"
+                    ng-click="chooseProperty(detail.name)"
                     class="value value-{{$index}} age">
-                    {{prop}}: {{value}}
+                    {{detail.name}}: {{detail.value}}
                 </li>
             </ul>
         </div>
         <div class="card back"></div>
-    </div>
+    </article>
 </li>

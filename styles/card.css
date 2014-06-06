@@ -1,0 +1,149 @@
+#my-card .card.back {
+    display: none;
+}
+
+.my-go .value {
+    cursor: pointer;
+}
+
+.my-go .value:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.value {
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    padding: 2px 5px;
+
+    -webkit-transform: rotate(-3deg);
+       -moz-transform: rotate(-3deg);
+        -ms-transform: rotate(-3deg);
+         -o-transform: rotate(-3deg);
+            transform: rotate(-3deg);
+
+    text-transform: capitalize;
+    font-size: 0.8em;
+
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#cards {
+    margin: 0;
+    padding: 0;
+}
+
+.card-directive {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.card-wrapper,
+.card {
+    width: 326px;
+    height: 525px;
+}
+
+
+.card {
+    overflow: hidden;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.card-header {
+    margin: 0;
+    position: absolute;
+    top: 28px;
+    left: 25px;
+    width: 278px;
+
+    -webkit-transform: rotate(-1deg);
+       -moz-transform: rotate(-1deg);
+        -ms-transform: rotate(-1deg);
+         -o-transform: rotate(-1deg);
+            transform: rotate(-1deg);
+}
+
+.card-heading {
+    font-family: PermanentMarker;
+    font-size: 1.7em;
+    margin: 0;
+}
+
+.card-description-title {
+    margin: 0;
+}
+
+.card-image {
+    position: absolute;
+    top: 60px;
+    left: 15px;
+
+    width: 300px;
+    height: 260px;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.card-description {
+    position: absolute;
+    width: 123px;
+    height: 180px;
+    top: 308px;
+    left: 24px;
+
+    -webkit-transform: rotate(-2deg);
+       -moz-transform: rotate(-2deg);
+        -ms-transform: rotate(-2deg);
+         -o-transform: rotate(-2deg);
+            transform: rotate(-2deg);
+}
+
+.card.front {
+    background-image: url("../images/card-bg.png");
+}
+
+.card.back {
+    background-image: url("../images/card-back.png");
+}
+
+.value-0 {
+    top: 306px;
+    left: 146px;
+    width: 159px;
+}
+
+.value-1 {
+    top: 338px;
+    left: 183px;
+    width: 123px;
+}
+
+.value-2 {
+    top: 370px;
+    left: 193px;
+    width: 112px;
+}
+
+.value-3 {
+    top: 402px;
+    left: 176px;
+    width: 130px;
+}
+
+.value-4 {
+    top: 437px;
+    left: 153px;
+    width: 152px;
+}
+
+.value-5 {
+    top: 468px;
+    left: 170px;
+    width: 135px;
+}
+
+
